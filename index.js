@@ -38,17 +38,28 @@ function buscarDdd() {
                 carregarCidadeNaTela(cidade);//chamando funcao para percorrer lista
             }
 
-            carregarDddsConsultadosNaTela(novoDdd.ddd); //carregando na tela
+            carregarDddsConsultadosNaTela(novoDdd.ddd, novoDdd.estado); //carregando na tela
             listaDddsConsultados.push(novoDdd.ddd); //salvando na lista
         });
 }
 
-function carregarDddsConsultadosNaTela(inputDdd) {
-    const itemDdd = document.createElement('li'); //criando uma variavel que sera a criadora do item lista
-    itemDdd.innerText = inputDdd; //definindo o valor do item lista como o valor solicitado pela funcao
+function carregarDddsConsultadosNaTela(inputDdd, inputEstado) {
+    const novaLinha = document.createElement('tr');     //criando a nova linha
 
-    const listaDdds = document.getElementById('lista_ddds'); //puxando a lista de dds 
-    listaDdds.appendChild(itemDdd); //criando filho pra lista
+    //criando colunas
+    const colunaDdd = document.createElement('td');   
+    const colunaEstado = document.createElement('td');  
+
+    //definindo os valores como o valor solicitado pela funcao
+    colunaDdd.innerText = inputDdd; 
+    colunaEstado.innerText = inputEstado; 
+
+    //adicionando colunas a nova linha
+    novaLinha.appendChild(colunaDdd);
+    novaLinha.appendChild(colunaEstado);
+
+    const tabelaDdds = document.getElementById('tabela_ddds'); //puxando a lista de dds 
+    tabelaDdds.appendChild(novaLinha); //criando filho pra tabela
 }
 
 function limparDadosNaTela() {
